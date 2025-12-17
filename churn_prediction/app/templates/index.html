@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Churn Prediction</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
 
+<body>
+    <div class="card">
+        <h2>Customer Churn Prediction</h2>
+
+        <form method="post" action="/predict">
+            <input type="number" name="tenure" placeholder="Tenure (months)" required />
+            <input type="number" step="0.01" name="MonthlyCharges" placeholder="Monthly Charges" required />
+            <input type="number" step="0.01" name="TotalCharges" placeholder="Total Charges" required />
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">{{ prediction }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
